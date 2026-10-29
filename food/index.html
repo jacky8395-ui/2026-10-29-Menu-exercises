@@ -1,0 +1,134 @@
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>菜單</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night: #1d1815;
+      --broth: #3a2516;
+      --paper: #efe3c8;
+      --noren: #a4262c;
+      --yolk: #e9a33b;
+
+      --serif: "Noto Serif TC", "Songti TC", serif;
+      --sans: "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      background: var(--night);
+      color: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .noren {
+      position: relative;
+      background: var(--noren);
+      height: 150px;
+      overflow: hidden;
+      transform-origin: top center;
+      animation: drop 0.9s cubic-bezier(.2,.7,.2,1) both;
+    }
+    .noren::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 18px;
+      background: var(--paper);
+      opacity: .92;
+    }
+    .noren-text {
+      position: absolute;
+      left: 50%;
+      top: 44px;
+      transform: translateX(-50%);
+      writing-mode: vertical-rl;
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 2.1rem;
+      letter-spacing: .4em;
+      color: var(--paper);
+    }
+
+    @keyframes drop {
+      from { transform: scaleY(0); }
+      to   { transform: scaleY(1); }
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 64px;
+    }
+
+    nav.menu {
+      display: grid;
+      gap: 16px;
+    }
+
+    nav.menu a {
+      display: block;
+      padding: 24px 28px;
+      background: var(--broth);
+      border-left: 6px solid var(--noren);
+      color: var(--paper);
+      text-decoration: none;
+      transition: background-color .2s ease, border-color .2s ease;
+    }
+    nav.menu a:hover,
+    nav.menu a:focus-visible {
+      background: #4a3019;
+      border-left-color: var(--yolk);
+    }
+    nav.menu a:focus-visible {
+      outline: 2px solid var(--yolk);
+      outline-offset: 3px;
+    }
+
+    .item-name {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-size: 1.9rem;
+      letter-spacing: .12em;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .noren { animation: none; }
+      nav.menu a { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noren" aria-hidden="true">
+    <span class="noren-text">拉麵</span>
+  </div>
+
+  <main class="wrap">
+    <nav class="menu" aria-label="菜單分類">
+      <!-- 相對路徑 -->
+      <!-- ./ 同一層 -->
+      <!-- ../ 上一層 -->
+      <!-- ../../ 上一層 -->
+      <a href="./f1.html">
+        <span class="item-name">主餐</span>
+      </a>
+      <a href="./f2.html">
+        <span class="item-name">小菜</span>
+      </a>
+      <a href="./f3.html">
+        <span class="item-name">飲料</span>
+      </a>
+    </nav>
+  </main>
+</body>
+</html>
